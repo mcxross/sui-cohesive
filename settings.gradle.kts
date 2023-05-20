@@ -18,3 +18,5 @@ pluginManagement {
 
 rootProject.name = "sui-cohesive"
 
+include(":sample")
+

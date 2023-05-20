@@ -34,7 +34,7 @@ open class MainView : CohesiveView {
 
   @Composable
   override fun Explorer() {
-    // TODO: Implement
+    xyz.mcxross.cohesive.sui.view.Explorer()
   }
 
   @Composable
