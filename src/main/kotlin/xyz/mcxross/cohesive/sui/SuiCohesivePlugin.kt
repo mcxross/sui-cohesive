@@ -1,9 +1,9 @@
-package com.mcxross.xcohesive
+package xyz.mcxross.cohesive.sui
 
 import com.mcxross.cohesive.cps.Plugin
 import com.mcxross.cohesive.cps.PluginWrapper
 
-class XCPlugin(pluginWrapper : PluginWrapper) : Plugin(pluginWrapper) {
+class SuiCohesivePlugin(pluginWrapper : PluginWrapper) : Plugin(pluginWrapper) {
   override fun start() {
    // Plugin is started
   }

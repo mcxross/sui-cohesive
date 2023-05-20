@@ -16,5 +16,5 @@ pluginManagement {
   }
 }
 
-rootProject.name = "x-cohesive"
+rootProject.name = "sui-cohesive"
 

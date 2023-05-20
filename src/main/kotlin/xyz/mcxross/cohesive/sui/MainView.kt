@@ -1,4 +1,4 @@
-package com.mcxross.xcohesive
+package xyz.mcxross.cohesive.sui
 
 import androidx.compose.runtime.Composable
 import com.mcxross.cohesive.common.frontend.api.ui.view.CohesiveView
@@ -12,21 +12,21 @@ import com.mcxross.cohesive.csp.annotation.Net
  * @since 0.1.0
  */
 @Cohesive(
-  platform = "Cohesive",
-  version = "0.1.0",
+  platform = "Sui",
+  version = "0.1.0-beta",
   nets =
     [
       Net(
         k = "Mainnet",
-        v = "https://mainnet.cohesive.network",
+        v = "https://fullnode.mainnet.sui.io",
       ),
       Net(
         k = "Testnet",
-        v = "https://testnet.cohesive.network",
+        v = "https://fullnode.testnet.sui.io",
       ),
       Net(
         k = "Localhost",
-        v = "http://localhost:3998",
+        v = "http://localhost:9000",
       ),
     ],
 )
