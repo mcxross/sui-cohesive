@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
   dependencies {
-    implementation("xyz.mcxross.ksui:ksui-jvm:1.2.0-beta")
+    /*implementation("xyz.mcxross.ksui:ksui-jvm:1.2.0-beta")*/
     compileOnly(kotlin("stdlib"))
     compileOnly("com.mcxross.cohesive:cohesive-desktop:0.1.0")
     compileOnly("com.mcxross.cohesive:cohesive-csp:0.1.0")
@@ -28,12 +28,12 @@ dependencies {
 }
 
 configure<CohesivePluginExtension> {
-  pluginId.set("com.mcxross.xcohesive")
-  pluginDescription.set("Cohesive secondary plugin template")
+  pluginId.set("xyz.mcxross.cohesive.sui")
+  pluginDescription.set("Cohesive Secondary Plugin for Sui")
   pluginRequires.set("2021.2")
-  pluginClass.set("com.mcxross.xcohesive.CohesivePlugin")
+  pluginClass.set("xyz.mcxross.cohesive.sui.SuiCohesivePlugin")
   pluginProvider.set("McXross")
   pluginDependencies.set("")
   pluginLicense.set("Apache-2.0")
-  pluginVersion.set("0.1.0")
+  pluginVersion.set("0.1.0-beta")
 }

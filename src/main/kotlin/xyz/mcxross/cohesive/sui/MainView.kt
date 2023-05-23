@@ -39,6 +39,6 @@ open class MainView : CohesiveView {
 
   @Composable
   override fun Wallet() {
-    // TODO: Implement
+    xyz.mcxross.cohesive.sui.view.Wallet()
   }
 }
