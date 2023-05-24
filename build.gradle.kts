@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
   dependencies {
-    /*implementation("xyz.mcxross.ksui:ksui-jvm:1.2.0-beta")*/
+    implementation("xyz.mcxross.ksui:ksui-jvm:1.2.0-beta")
     compileOnly(kotlin("stdlib"))
     compileOnly("com.mcxross.cohesive:cohesive-desktop:0.1.0")
     compileOnly("com.mcxross.cohesive:cohesive-csp:0.1.0")
