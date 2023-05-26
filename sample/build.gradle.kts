@@ -18,14 +18,13 @@ repositories {
 
 kotlin {
   jvm {
-    jvmToolchain(11)
     withJava()
   }
   sourceSets {
     val jvmMain by getting {
       dependencies {
         implementation(compose.desktop.currentOs)
-        implementation("com.mcxross.cohesive:cohesive-desktop:0.1.0")
+        implementation(rootProject)
       }
     }
     val jvmTest by getting
