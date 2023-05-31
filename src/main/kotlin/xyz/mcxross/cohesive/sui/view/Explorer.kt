@@ -11,9 +11,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.rememberScrollbarAdapter
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -42,6 +42,7 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import xyz.mcxross.cohesive.sui.component.SuiSystemState
 import xyz.mcxross.cohesive.sui.pxToDp
 
 @Composable
@@ -83,65 +84,51 @@ internal fun FrontLayer() {
                   Modifier.padding(start = 30.dp, end = 30.dp)
                       .fillMaxSize()
                       .verticalScroll(stateVertical)) {
-                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                  Surface(
-                      modifier = Modifier.fillMaxWidth().height(400.dp),
-                      shape = RoundedCornerShape(8.dp),
-                      contentColor = MaterialTheme.colors.onSurface,
-                      elevation = 5.dp) {
-                        Column(modifier = Modifier.fillMaxWidth()) {
-                          Box(modifier = Modifier.padding(5.dp).fillMaxWidth()) {
-                            Text(
-                                text = "Network Summary",
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Medium)
-                          }
-                          Divider(
-                              modifier = Modifier.fillMaxWidth(),
-                              color = MaterialTheme.colors.primary,
-                              thickness = 1.dp)
-                        }
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                      SuiSystemState()
+                      BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
+                        var maxWidth by remember { mutableStateOf(maxWidth.value) }
+
+                        Row(
+                            modifier =
+                                Modifier.fillMaxWidth().onSizeChanged {
+                                  maxWidth = it.width.toFloat()
+                                },
+                            horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                              Card(
+                                  modifier =
+                                      Modifier.size(
+                                          (maxWidth.toInt().pxToDp() - 16.dp) * 0.25f, 300.dp)) {}
+                              Card(
+                                  modifier =
+                                      Modifier.size(
+                                          (maxWidth.toInt().pxToDp() - 16.dp) * 0.5f, 300.dp)) {}
+                              Card(
+                                  modifier =
+                                      Modifier.size(
+                                          (maxWidth.toInt().pxToDp() - 16.dp) * 0.25f, 300.dp)) {}
+                            }
                       }
 
-                  BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-                    var maxWidth by remember { mutableStateOf(maxWidth.value) }
-
-                    Row(
-                        modifier =
-                            Modifier.fillMaxWidth().onSizeChanged { maxWidth = it.width.toFloat() },
-                        horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                          Card(
-                              modifier =
-                                  Modifier.size(
-                                      (maxWidth.toInt().pxToDp() - 16.dp) * 0.25f, 300.dp)) {}
-                          Card(
-                              modifier =
-                                  Modifier.size(
-                                      (maxWidth.toInt().pxToDp() - 16.dp) * 0.5f, 300.dp)) {}
-                          Card(
-                              modifier =
-                                  Modifier.size(
-                                      (maxWidth.toInt().pxToDp() - 16.dp) * 0.25f, 300.dp)) {}
+                      Column(modifier = Modifier.fillMaxWidth()) {
+                        Box(modifier = Modifier.padding(5.dp).fillMaxWidth()) {
+                          Text(
+                              text = "Transaction Blocks",
+                              fontSize = 18.sp,
+                              fontWeight = FontWeight.Medium)
                         }
-                  }
 
-                  Column(modifier = Modifier.fillMaxWidth()) {
-                    Box(modifier = Modifier.padding(5.dp).fillMaxWidth()) {
-                      Text(
-                          text = "Transaction Blocks",
-                          fontSize = 18.sp,
-                          fontWeight = FontWeight.Medium)
+                        Divider(
+                            modifier = Modifier.fillMaxWidth(),
+                            color = MaterialTheme.colors.background,
+                            thickness = 1.dp)
+                        Box(modifier = Modifier) {
+                          Column(Modifier) { repeat(100) { Text(it.toString()) } }
+                        }
+                      }
                     }
-
-                    Divider(
-                        modifier = Modifier.fillMaxWidth(),
-                        color = MaterialTheme.colors.background,
-                        thickness = 1.dp)
-                    Box(modifier = Modifier) {
-                      Column(Modifier) { repeat(100) { Text(it.toString()) } }
-                    }
-                  }
-                }
               }
 
           VerticalScrollbar(
